@@ -1,5 +1,15 @@
-const {Sequelize} = require("sequelize");
-const {sequelize} = require('../DB/db_connect.js');
+// const {Sequelize} = require("sequelize");
+// const {sequelize} = require('../DB/db_connect.js');
+
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('hospital_system', 'root', '', {
+  host: 'localhost',
+  port:'3306',
+  dialect: 'mysql'
+});
+
+
+console.log('it хуйня')
 
 const Car = sequelize.define('car', {
   brand: Sequelize.STRING,
@@ -51,5 +61,7 @@ CarRoute.belongsTo(Car)
 Route.hasMany(CarRoute)
 CarRoute.belongsTo(Route)
 
-Garage.hasMany(Staff)
-Staff.belongsTo(Garage)
+// Garage.hasMany(Staff)
+// Staff.belongsTo(Garage)
+
+module.exports = {sequelize}
